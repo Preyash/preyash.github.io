@@ -1,4 +1,5 @@
 :root {
+    --offset: 6px;
     --hue: 253;
     --hue-complimentary1: calc(var(--hue) + 30);
     --hue-complimentary2: calc(var(--hue) + 60);
@@ -18,6 +19,23 @@
     background: yellow;
 }
 
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background: #D9D9D9;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333352;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #6667AB;
+}
 
 * {
     margin: 0;
@@ -33,9 +51,8 @@ html {
 body {
     max-width: 1920px;
     min-height: 100vh;
-    display: grid;
-    place-items: center;
-    padding: 2rem;
+    /* display: grid;
+    place-items: center; */
     font-family: var(--font-family);
     color: var(--dark-color);
     background: var(--bg-gradient);
@@ -68,22 +85,31 @@ strong {
     border: 1px solid rgba(255, 255, 255, 0.125);
 }
 
+.transparent {
+    background: rgba(255, 255, 255, 0.375);
+    box-shadow: 0 0.75rem 2rem 0 rgba(0, 0, 0, 0.1);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+}
+
 .overlay__inner {
     max-width: 36rem;
 }
 
 .overlay__title {
-    font-size: 1.875rem;
-    line-height: 2.75rem;
+    font-size: 4.5rem;
     font-weight: 700;
     letter-spacing: -0.025em;
     margin-bottom: 2rem;
 }
 
 .text-gradient {
-    background-image: linear-gradient(45deg,
+    display: inline-block;
+    /* background-image: linear-gradient(45deg,
             var(--base) 25%,
-            var(--complimentary2));
+            var(--complimentary2)); */
+    background-color: #4158D0;
+    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     -moz-background-clip: text;
@@ -145,13 +171,6 @@ a {
     align-items: center;
 }
 
-/* Not too many browser support this yet but it's good to add! */
-@media (prefers-contrast: high) {
-    .orb-canvas {
-        display: none;
-    }
-}
-
 @media only screen and (max-width: 1140px) {
     .overlay {
         padding: 8rem 4rem;
@@ -169,9 +188,7 @@ a {
     }
 
     .overlay__title {
-        font-size: 1.25rem;
-        line-height: 2rem;
-        margin-bottom: 1.5rem;
+        font-size: 2rem;
     }
 
     .overlay__description {
@@ -181,7 +198,7 @@ a {
     }
 }
 
-@media only screen and (max-width: 600px) {
+/* @media only screen and (max-width: 600px) {
     .overlay {
         padding: 1.5rem;
     }
@@ -198,5 +215,120 @@ a {
 
     .overlay__btn:first-child {
         margin-bottom: 1rem;
+    }
+} */
+
+.menu {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10px;
+    zoom: 0.8;
+}
+
+.links img {
+    margin-bottom: 20px;
+}
+
+.menu .links:last-of-type img {
+    margin-bottom: 0;
+}
+
+.block {
+    width: 100%;
+    height: 100vh;
+    background-repeat: no-repeat;
+    /* background-attachment: fixed; */
+    background-size: cover;
+    background-position: 100% 0;
+}
+
+.first {
+    background-image: url("https://uploads-ssl.webflow.com/5c3b9a6b6bc47198ec041cad/5ee9089e1682636c5a90b0c8_ponder%20homepage.png");
+}
+
+.sec {
+    background-image: url("https://uploads-ssl.webflow.com/5c3b9a6b6bc47198ec041cad/5e306be503c1a3844cd06e9d_lenovo%20homepage%20banner%20dark.png");
+}
+
+.mask {
+    height: 106px;
+    position: relative;
+    overflow: hidden;
+    margin-top: var(--offset);
+}
+
+.mask span {
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    top: 100px;
+    padding-bottom: var(--offset);
+    background-size: 100% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-repeat: no-repeat;
+}
+
+.mask span[data-show] {
+    transform: translateY(-100%);
+    transition: .5s transform ease-in-out;
+}
+
+.mask span[data-up] {
+    transform: translateY(-200%);
+    transition: .5s transform ease-in-out;
+}
+
+.mask span:nth-child(1) {
+    background-image: linear-gradient(to right, #2193b0, #6dd5ed);
+}
+
+.mask span:nth-child(2) {
+    background-image: linear-gradient(62deg, #ddb44e 60%, #e79e75);
+}
+
+.mask span:nth-child(3) {
+    background-image: linear-gradient(45deg, var(--base) 25%, var(--complimentary2));
+}
+
+.mask span:nth-child(4) {
+    background-image: linear-gradient(45deg, #fa3f67, #fa7671);
+}
+
+.intro {
+    display: flex;
+    justify-content: center;
+    text-align: right;
+    align-items: center;
+}
+
+.intro section h1 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.intro section h4 {
+    margin-top: -6rem;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+@media only screen and (max-width: 840px) {
+    .intro section h4 {
+        margin-top: 0;
+    }
+
+    .intro {
+        text-align: center;
+    }
+
+    .mask {
+        transform: translateY(-8px);
+        height: 56px;
     }
 }

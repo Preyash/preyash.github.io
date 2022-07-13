@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Title</title>
+    <title>Portfolio</title>
     <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -16,42 +16,71 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <div class="overlay">
-      <div class="overlay__inner">
-        <h1 class="overlay__title">
-          Hey, would you like to learn how to create a
-          <span class="text-gradient">generative</span> UI just like this?
-        </h1>
-        <p class="overlay__description">
-          In this tutorial we will be creating a generative “orb” animation
-          using pixi.js, picking some lovely random colors and pulling it all
-          together in a nice frosty UI.
-          <strong>We're gonna talk accessibility, too.</strong>
-        </p>
-        <div class="overlay__btns">
-          <button class="overlay__btn overlay__btn--transparent">
-            <a
-              href="https://georgefrancis.dev/writing/create-a-generative-landing-page-and-webgl-powered-background/"
-              target="_blank"
-            >
-              View Tutorial
-            </a>
-          </button>
-          <button class="overlay__btn overlay__btn--colors">
-            <span>Randomise Colors</span>
-            <span class="overlay__btn-emoji">🎨</span>
-          </button>
+    <div class="transparent menu">
+      <a class="links active" href="#home"
+        ><img src="./img/home_filled.png" alt=""
+      /></a>
+      <a class="links" href="#portfolio"
+        ><img src="./img/portfolio.png" alt=""
+      /></a>
+      <a class="links" href="#about"><img src="./img/about.png" alt="" /></a>
+      <a class="links" href="#stack"><img src="./img/stack.png" alt="" /></a>
+      <a class="links" href="#contact"
+        ><img src="./img/contact-card.png" alt=""
+      /></a>
+    </div>
+
+    <div class="container">
+      <div class="row" id="home">
+        <div class="col-sm-12 col-md-12 col-lg-4 mt-4 intro">
+          <section>
+            <h4>Nice to see you</h4>
+            <h1>I'm Preyash</h1>
+          </section>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-7 mt-4">
+          <h1 class="overlay__title">
+            A
+            <div class="text-gradient">passionate</div>
+            Front-End Developer based in INDIA specializing in
+            <div class="mask">
+              <span data-show>programming.</span>
+              <span>designing.</span>
+              <span>wireframing.</span>
+              <span>prototyping.</span>
+            </div>
+          </h1>
+        </div>
+      </div>
+
+      <div class="block first">i just want you</div>
+      <div class="block sec">i just want you</div>
+      <div class="overlay">
+        <div class="overlay__inner">
+          <p class="overlay__description">
+            In this tutorial we will be creating a generative “orb” animation
+            using pixi.js, picking some lovely random colors and pulling it all
+            together in a nice frosty UI.
+            <strong>We're gonna talk accessibility, too.</strong>
+          </p>
+          <div class="overlay__btns">
+            <button class="overlay__btn overlay__btn--transparent">
+              <a
+                href="https://georgefrancis.dev/writing/create-a-generative-landing-page-and-webgl-powered-background/"
+                target="_blank"
+              >
+                View Tutorial
+              </a>
+            </button>
+            <button class="overlay__btn overlay__btn--colors">
+              <span>Randomise Colors</span>
+              <span class="overlay__btn-emoji">🎨</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
 
-		<img src="https://img.icons8.com/fluency-systems-regular/36/0a002e/home.png" alt="">
-		<img src="https://img.icons8.com/fluency-systems-filled/36/0a002e/portfolio.png" alt="">
-		<img src="https://img.icons8.com/fluency-systems-regular/36/0a002e/about.png" alt="">
-		<img src="https://img.icons8.com/fluency-systems-regular/36/000000/stack.png" alt="">
-		<img src="https://img.icons8.com/fluency-systems-regular/36/0a002e/contact-card.png" alt="">
-
-		
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
       integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
@@ -62,5 +91,6 @@
       integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
       crossorigin="anonymous"
     ></script>
+    <script src="./index.js"></script>
   </body>
 </html>
