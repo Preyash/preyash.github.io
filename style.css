@@ -332,3 +332,12 @@ a {
         height: 56px;
     }
 }
+
+.skills .block {
+    width: 200px;
+    text-align: center;
+}
+
+.skills .block img {
+    width: 100px;
+}
