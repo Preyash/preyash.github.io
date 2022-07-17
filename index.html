@@ -13,6 +13,24 @@
       integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
+      integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css"
+      integrity="sha512-6lLUdeQ5uheMFbWm3CP271l14RsX1xtx+J5x2yeIDkkiBpeVTNhTqijME7GgRKKi6hCqovwCoBTlRBEC20M8Mg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/unicons.css"
+    />
     <link rel="icon" type="image/x-icon" href="./img/favi (1).png" />
     <link rel="stylesheet" href="./style.css" />
   </head>
@@ -36,7 +54,7 @@
         <div class="col-sm-12 col-md-12 col-lg-4 mt-4 intro">
           <section>
             <h4>Nice to see you</h4>
-            <h1>I'm Preyash</h1>
+            <h1>I'm <span class="name">Preyash</span></h1>
           </section>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-8 mt-4">
@@ -54,31 +72,99 @@
         </div>
       </div>
 
-      <div class="block first">i just want you</div>
-      <div class="block sec">i just want you</div>
-      <div class="overlay">
-        <div class="overlay__inner">
-          <p class="overlay__description">
-            In this tutorial we will be creating a generative “orb” animation
-            using pixi.js, picking some lovely random colors and pulling it all
-            together in a nice frosty UI.
-            <strong>We're gonna talk accessibility, too.</strong>
-          </p>
-          <div class="overlay__btns">
-            <button class="overlay__btn overlay__btn--transparent">
-              <a
-                href="https://georgefrancis.dev/writing/create-a-generative-landing-page-and-webgl-powered-background/"
-                target="_blank"
-              >
-                View Tutorial
-              </a>
-            </button>
-            <button class="overlay__btn overlay__btn--colors">
-              <span>Randomise Colors</span>
-              <span class="overlay__btn-emoji">🎨</span>
-            </button>
-          </div>
+      <div class="portfolio" id="portfolio">
+        <div class="header">
+          <h1>Portfolio</h1>
         </div>
+
+        <section class="overlay project">
+          <div class="slider">
+            <div><img src="./img/unova.png" alt="" /></div>
+            <div><img src="./img/unova2.png" alt="" /></div>
+            <div><img src="./img/unova3.png" alt="" /></div>
+            <div><img src="./img/unova4.png" alt="" /></div>
+          </div>
+          <h2>
+            <div class="link">
+              <a
+                href="https://trace.unova.io/"
+                target="_blank"
+                data-txt="Unova"
+              >
+                <div class="link">Unova</div>
+              </a>
+            </div>
+          </h2>
+          <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 mt-4">
+              <ul>
+                <li>
+                  Created a supply chain system as website and mobile app.
+                </li>
+                <li>
+                  Used google maps integration to show the journey of the
+                  product, used markers to show the start & end point.
+                </li>
+                <li>Had exposure to responsive CSS and API calling.</li>
+                <li>Translated designs and into quality code.</li>
+              </ul>
+              <div class="overlay__badges mt-4">
+                <button class="overlay__badge">Reactjs</button>
+                <button class="overlay__badge">Responsive Design</button>
+                <button class="overlay__badge">Google Maps Integration</button>
+                <button class="overlay__badge">API Integration</button>
+              </div>
+            </div>
+          </div>
+        </section>
+        <br />
+
+        <section class="overlay project">
+          <div class="slider2">
+            <div><img src="./img/Meraoffice/meraoffice (1).jpeg" alt="" /></div>
+            <div><img src="./img/Meraoffice/meraoffice (2).jpeg" alt="" /></div>
+            <div><img src="./img/Meraoffice/meraoffice (3).jpeg" alt="" /></div>
+            <div><img src="./img/Meraoffice/meraoffice (4).jpeg" alt="" /></div>
+            <div><img src="./img/Meraoffice/meraoffice (5).jpeg" alt="" /></div>
+            <div><img src="./img/Meraoffice/meraoffice (6).jpeg" alt="" /></div>
+            <div><img src="./img/Meraoffice/meraoffice (7).jpeg" alt="" /></div>
+            <div><img src="./img/Meraoffice/meraoffice (8).jpeg" alt="" /></div>
+            <div><img src="./img/Meraoffice/meraoffice (9).jpeg" alt="" /></div>
+            <div><img src="./img/Meraoffice/meraoffice (10).jpeg" alt="" /></div>
+          </div>
+          <h2>
+            <div class="link">
+              <a
+                href="https://meraoffice.in/"
+                target="_blank"
+                data-txt="Meraoffice"
+              >
+                <div class="link">Meraoffice</div>
+              </a>
+            </div>
+          </h2>
+          <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 mt-4">
+              <ul>
+                <li>
+                  Created a supply chain system as website and mobile app.
+                </li>
+                <li>
+                  Used google maps integration to show the journey of the
+                  product, used markers to show the start & end point.
+                </li>
+                <li>Had exposure to responsive CSS and API calling.</li>
+                <li>Translated designs and into quality code.</li>
+              </ul>
+              <div class="overlay__badges mt-4">
+                <button class="overlay__badge">Reactjs</button>
+                <button class="overlay__badge">Mobx</button>
+                <button class="overlay__badge">Mobx-state-tree</button>
+              </div>
+            </div>
+          </div>
+        </section>
+        <br />
       </div>
 
       <section class="skills" id="skills">
@@ -200,12 +286,41 @@
           </div>
         </div>
       </section>
-      <br>
-      <br>
-      <br>
-      <br>
+      <br />
+      <br />
+      <br />
+      <br />
+
+      <div class="progress-wrap">
+        <svg
+          class="progress-circle svg-content"
+          width="100%"
+          height="100%"
+          viewBox="-1 -1 102 102"
+        >
+          <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+        </svg>
+      </div>
     </div>
 
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.0/jquery-migrate.min.js"
+      integrity="sha512-QDsjSX1mStBIAnNXx31dyvw4wVdHjonOwrkaIhpiIlzqGUCdsI62MwQtHpJF+Npy2SmSlGSROoNWQCOFpqbsOg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+      integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
       integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
@@ -216,6 +331,8 @@
       integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
       crossorigin="anonymous"
     ></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script>
     <script src="./index.js"></script>
   </body>
 </html>
+
