@@ -42,6 +42,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: 0.4s;
 }
 
 html {
@@ -85,6 +86,10 @@ strong {
     border: 1px solid rgba(255, 255, 255, 0.125);
 }
 
+.project {
+    margin-bottom: 4rem;
+}
+
 .transparent {
     background: rgba(255, 255, 255, 0.375);
     box-shadow: 0 0.75rem 2rem 0 rgba(0, 0, 0, 0.1);
@@ -123,6 +128,10 @@ li {
     margin-bottom: 1rem;
     font-weight: 500;
 }
+
+/* .overlay__description {
+    font-weight: 400;
+} */
 
 .overlay__btns {
     width: 100%;
@@ -197,6 +206,10 @@ li {
         font-size: 0.875rem;
         line-height: 1.5rem;
         margin-bottom: 2.5rem;
+    }
+
+    .slider2 .slick-slide img {
+        height: auto !important;
     }
 }
 
@@ -314,16 +327,12 @@ h1 {
 }
 
 .overlay__badges {
-    /* display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    grid-gap: 1rem; */
     display: flex;
     flex-wrap: wrap;
 }
 
 .overlay__badge {
     margin-bottom: 10px;
-    height: 2.5rem;
     font-size: 0.875rem;
     font-weight: 600;
     background: transparent;
@@ -332,7 +341,7 @@ h1 {
     border-radius: 2rem;
     outline-color: hsl(var(--hue), 95%, 50%);
     margin-right: 0.75rem;
-    padding: 0 50px;
+    padding: 10px 50px;
     cursor: text !important;
 }
 
@@ -494,7 +503,9 @@ p {
     zoom: 0.7;
 }
 
-.slider, .slider2 {
+.slider,
+.slider2,
+.project-ss {
     margin-bottom: 42px;
 }
 
@@ -537,7 +548,7 @@ p {
 
 .progress-wrap {
     position: fixed;
-    right: 6px;
+    right: 3px;
     bottom: 30px;
     height: 46px;
     width: 46px;

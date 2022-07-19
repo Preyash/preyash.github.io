@@ -11,6 +11,44 @@ links.map((i, j) =>
 	})
 )
 
+window.onload = () => {
+	Array.from(document.querySelectorAll('.slider2 .slick-list img')).map(i => i.classList.add('img-fluid'))
+}
+
+const links_data = document.querySelector('.links_data')
+
+Array.from(links_data.children).map((i) =>
+	i.addEventListener("mouseenter", function () {
+		i.children[0].src = i.children[0].src.replace('-systems-filled', '')
+	})
+)
+
+Array.from(links_data.children).map((i) =>
+	i.addEventListener("mouseleave", function () {
+		let src = i.children[0].src
+		let index = src.indexOf('fluency') + 'fluency'.length
+		let newSrc = src.slice(0, index) + "-systems-filled" + src.slice(index);
+		i.children[0].src = newSrc;
+	})
+)
+
+let responsive = [
+	{
+		breakpoint: 768,
+		settings: {
+			slidesToShow: 1,
+			slidesToScroll: 1
+		}
+	},
+	{
+		breakpoint: 480,
+		settings: {
+			slidesToShow: 1,
+			slidesToScroll: 1
+		}
+	}
+]
+
 let slidesToShow = $('.slider') ? 2 : 1
 $(document).ready(function () {
 	$('.slider').slick({
@@ -19,46 +57,15 @@ $(document).ready(function () {
 		slidesToScroll: 1,
 		prevArrow: "<img class='slick-prev slick-arrow' src='./img/left.png' />",
 		nextArrow: "<img class='slick-next slick-arrow' src='./img/left.png' />",
-		responsive: [
-			{
-				breakpoint: 768,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1
-				}
-			},
-			{
-				breakpoint: 480,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1
-				}
-			}
-		]
+		responsive: responsive
 	});
-
 	$('.slider2').slick({
 		infinite: true,
 		slidesToShow: 1,
 		slidesToScroll: 1,
 		prevArrow: "<img class='slick-prev slick-arrow' src='./img/left.png' />",
 		nextArrow: "<img class='slick-next slick-arrow' src='./img/left.png' />",
-		responsive: [
-			{
-				breakpoint: 768,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1
-				}
-			},
-			{
-				breakpoint: 480,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1
-				}
-			}
-		]
+		responsive: responsive
 	});
 });
 
