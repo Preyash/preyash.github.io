@@ -433,7 +433,7 @@ p {
 
 .overlay a:hover .link,
 .overlay a:hover:after {
-    transform: translateY(-100%);
+    transform: translateY(-102%);
 }
 
 .slick-list {
