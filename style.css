@@ -18,6 +18,8 @@
             hsl(var(--hue), 95%, 84%));
 }
 
+/* 0A002E */
+
 ::selection {
     background: var(--yellow);
 }
@@ -84,6 +86,10 @@ strong {
     margin-bottom: 4rem;
 }
 
+.tdn {
+    text-decoration: none;
+}
+
 .transparent {
     background: rgba(255, 255, 255, 0.375);
     box-shadow: 0 0.75rem 2rem 0 rgba(0, 0, 0, 0.1);
@@ -113,6 +119,10 @@ strong {
     -webkit-text-fill-color: transparent;
     -moz-background-clip: text;
     -moz-text-fill-color: transparent;
+}
+
+.overlay__description p {
+    margin-bottom: 0;
 }
 
 .overlay__description,
@@ -258,6 +268,20 @@ h1 {
     cursor: text !important;
 }
 
+.download_resume {
+    font-size: 1.1rem;
+    cursor: pointer !important;
+    display: flex;
+    align-items: flex-start;
+}
+
+.dib {
+    display: inline-block;
+}
+
+.download_resume img {
+    margin-right: 10px;
+}
 
 .skills_data {
     display: grid;
