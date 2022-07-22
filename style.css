@@ -110,9 +110,6 @@ strong {
 
 .text-gradient {
     display: inline-block;
-    /* background-image: linear-gradient(45deg,
-            var(--base) 25%,
-            var(--complimentary2)); */
     background-color: #4158D0;
     background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
     -webkit-background-clip: text;
@@ -123,14 +120,16 @@ strong {
 
 .overlay__description p {
     margin-bottom: 0;
+    font-size: 1.2rem;
+    line-height: 1.75rem;
+    font-weight: 500;
 }
 
-.overlay__description,
 .overlay li {
     font-size: 1.2rem;
     line-height: 1.75rem;
-    margin-bottom: 1rem;
     font-weight: 500;
+    margin-bottom: 1rem;
 }
 
 .overlay__btns {
@@ -151,14 +150,8 @@ strong {
     background: var(--dark-color);
     border: none;
     border-radius: 0.5rem;
-    /* transition: transform 150ms ease; */
     outline-color: hsl(var(--hue), 95%, 50%);
 }
-
-/* .overlay__btn:hover {
-    transform: scale(1.05);
-    cursor: pointer;
-} */
 
 .overlay__btn--transparent {
     background: transparent;
@@ -272,7 +265,7 @@ h1 {
     font-size: 1.1rem;
     cursor: pointer !important;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .dib {
@@ -387,7 +380,8 @@ p {
     -webkit-text-stroke: 1px var(--dark-color);
     text-shadow: var(--start) var(--start) 0px #69D2EA,
         calc(var(--start) + 5px) calc(var(--start) + 5px) 0px #e601c0,
-        calc(var(--start) + 10px) calc(var(--start) + 10px) 0px #e9019a;
+        calc(var(--start) + 10px) calc(var(--start) + 10px) 0px #e9019a,
+        calc(var(--start) + 15px) calc(var(--start) + 15px) 0px #F5B57E;
 }
 
 .name:hover {
@@ -507,7 +501,7 @@ p {
     text-align: center;
     line-height: 46px;
     font-size: 24px;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--dark-color);
     left: 0;
     top: 0;
     height: 46px;
@@ -616,11 +610,6 @@ p {
     animation-delay: 1s;
 }
 
-.list-container.menu-active .more-button {
-    -webkit-animation: onePulse 0.6s forwards linear;
-    animation: onePulse 0.6s forwards linear;
-}
-
 .list-container.menu-active .menu-icon-wrapper {
     transform: rotate(-45deg);
 }
@@ -639,7 +628,6 @@ p {
 
 .more-button {
     background-color: var(--dark-color);
-    box-shadow: 0px 0px 0px 4px rgba(105, 210, 234, 0.3);
     border-radius: 50%;
     width: 46px;
     height: 46px;
@@ -730,20 +718,6 @@ p {
     font-weight: bold;
 }
 
-@keyframes onePulse {
-    0% {
-        box-shadow: 0px 0px 0px 0px rgba(105, 210, 234, 0.3);
-    }
-
-    50% {
-        box-shadow: 0px 0px 0px 12px rgba(92, 103, 255, 0.1);
-    }
-
-    100% {
-        box-shadow: 0px 0px 0px 4px rgba(105, 210, 234, 0.3);
-    }
-}
-
 @keyframes fadeInItem {
     100% {
         transform: translatex(0px);
@@ -830,18 +804,18 @@ p {
         padding: 7px 40px;
     }
 
-    .overlay__description {
-        line-height: 1.5rem;
-        margin-bottom: 2.5rem;
-    }
-
     .overlay a {
         font-size: 1.5rem;
     }
 
-    .overlay__description,
+    .overlay__description {
+        margin-bottom: 2.5rem;
+    }
+
+    .overlay__description p,
     .overlay li {
-        font-size: 1rem;
+        font-size: 1.1rem;
+        line-height: 1.5rem;
     }
 
     .slider2 .slick-slide img {
@@ -851,8 +825,12 @@ p {
 }
 
 @media only screen and (max-width: 500px) {
+    body {
+        padding: 0.5rem;
+    }
+
     .overlay a {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
     }
 
     .overlay__badge {
@@ -869,5 +847,10 @@ p {
 
     .overlay {
         padding: 2rem 1.5rem;
+    }
+
+    .owl-carousel-small .owl-item img {
+        width: 40%;
+        margin: 0 auto;
     }
 }
