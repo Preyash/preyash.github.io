@@ -261,7 +261,7 @@ h1 {
     cursor: text !important;
 }
 
-.download_resume {
+.download {
     font-size: 1.1rem;
     cursor: pointer !important;
     display: flex;
@@ -272,7 +272,7 @@ h1 {
     display: inline-block;
 }
 
-.download_resume img {
+.download img {
     margin-right: 10px;
 }
 
