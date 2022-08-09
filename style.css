@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;700;800&display=swap');
+
 :root {
     --start: 5px;
     --imgWidth: 70px;
@@ -5,6 +7,7 @@
     --hue: 253;
     --yellow: #fbdf50;
     --orange: #EE6C4D;
+    --darkBlue: #0A002E;
     --hue-complimentary1: calc(var(--hue) + 30);
     --hue-complimentary2: calc(var(--hue) + 60);
     --dark-color: hsl(var(--hue), 100%, 9%);
@@ -17,8 +20,6 @@
             hsl(var(--hue), 95%, 99%),
             hsl(var(--hue), 95%, 84%));
 }
-
-/* 0A002E */
 
 ::selection {
     background: var(--yellow);
@@ -253,7 +254,7 @@ h1 {
     font-weight: 600;
     background: transparent;
     color: var(--dark-color);
-    border: 2px solid var(--dark-color);
+    border: 3px solid var(--dark-color);
     border-radius: 2rem;
     outline-color: hsl(var(--hue), 95%, 50%);
     margin-right: 0.75rem;
@@ -284,7 +285,7 @@ h1 {
 
 .links_data {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
     grid-gap: 2rem;
 }
 
@@ -667,7 +668,7 @@ p {
 }
 
 .more-button-list-item:first-child {
-    padding-top: 10px;
+    padding-top: 5px;
 }
 
 .more-button-list img {
@@ -798,6 +799,7 @@ p {
 
     .overlay__title {
         font-size: 2rem;
+        margin-top: 20px;
     }
 
     .overlay__badge {
@@ -814,7 +816,7 @@ p {
 
     .overlay__description p,
     .overlay li {
-        font-size: 1.1rem;
+        font-size: 1rem;
         line-height: 1.5rem;
     }
 
@@ -853,4 +855,9 @@ p {
         width: 40%;
         margin: 0 auto;
     }
+}
+
+ol,
+ul {
+    padding-left: 1.2rem;
 }
