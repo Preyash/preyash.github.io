@@ -3,7 +3,6 @@ links.map((i) =>
 	i.addEventListener("click", function () {
 		[].forEach.call(document.querySelectorAll(".active"), (i) => {
 			i.classList.remove('active');
-			console.log(i)
 			i.children[0].src = i.children[0]?.src?.replace('_filled', '');
 		});
 		i.className += " active";
