@@ -108,16 +108,24 @@ strong {
 .overlay {
   width: 100%;
   padding: 3rem 4rem;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.6);
   box-shadow: var(--card-shadow);
   border-radius: 1.5rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
   transition: all var(--transition-speed) ease;
   margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .project {
   margin-bottom: 4rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--card-hover-shadow);
 }
 
 .tdn {
@@ -125,10 +133,12 @@ strong {
 }
 
 .transparent {
-  background: rgba(255, 255, 255, 0.375);
+  background: rgba(255, 255, 255, 0.45);
   box-shadow: 0 0.75rem 2rem 0 rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.125);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 1rem;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .overlay__inner {
@@ -162,6 +172,11 @@ strong {
   font-size: 1.2rem;
   line-height: 1.75rem;
   font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+.overlay__description p:last-child {
+  margin-bottom: 0;
 }
 
 .overlay li {
@@ -169,6 +184,7 @@ strong {
   line-height: 1.75rem;
   font-weight: 500;
   margin-bottom: 1rem;
+  letter-spacing: 0.2px;
 }
 
 .overlay__btns {
@@ -300,6 +316,12 @@ h1 {
   padding: 8px 20px;
   cursor: text !important;
   transition: all var(--transition-speed) ease;
+  letter-spacing: 0.5px;
+}
+
+.overlay__badge:hover {
+  background: rgba(105, 210, 234, 0.2);
+  transform: translateY(-2px);
 }
 
 .download {
@@ -330,6 +352,14 @@ h1 {
   gap: 100px;
 }
 
+.links_data a {
+  transition: transform 0.3s ease;
+}
+
+.links_data a:hover {
+  transform: scale(1.1);
+}
+
 .skill_block {
   text-align: center;
 }
@@ -337,6 +367,11 @@ h1 {
 .skill_block img {
   width: var(--imgWidth);
   margin-bottom: 40px;
+  transition: transform 0.3s ease;
+}
+
+.skill_block img:hover {
+  transform: scale(1.1);
 }
 
 .small {
@@ -439,6 +474,28 @@ p {
     calc(var(--start) + 5px) calc(var(--start) + 5px) 0px #e601c0,
     calc(var(--start) + 10px) calc(var(--start) + 10px) 0px #e9019a,
     calc(var(--start) + 15px) calc(var(--start) + 15px) 0px #f5b57e;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    text-shadow: var(--start) var(--start) 0px #69d2ea,
+      calc(var(--start) + 5px) calc(var(--start) + 5px) 0px #e601c0,
+      calc(var(--start) + 10px) calc(var(--start) + 10px) 0px #e9019a,
+      calc(var(--start) + 15px) calc(var(--start) + 15px) 0px #f5b57e;
+  }
+  50% {
+    text-shadow: var(--start) var(--start) 0px #69d2ea,
+      calc(var(--start) + 6px) calc(var(--start) + 6px) 0px #e601c0,
+      calc(var(--start) + 12px) calc(var(--start) + 12px) 0px #e9019a,
+      calc(var(--start) + 18px) calc(var(--start) + 18px) 0px #f5b57e;
+  }
+  100% {
+    text-shadow: var(--start) var(--start) 0px #69d2ea,
+      calc(var(--start) + 5px) calc(var(--start) + 5px) 0px #e601c0,
+      calc(var(--start) + 10px) calc(var(--start) + 10px) 0px #e9019a,
+      calc(var(--start) + 15px) calc(var(--start) + 15px) 0px #f5b57e;
+  }
 }
 
 .name:hover {
@@ -450,6 +507,21 @@ p {
   text-shadow: var(--start) var(--start) 0px #69d2ea;
   transition: all 0.5s;
   color: var(--dark-color);
+  position: relative;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.header h1::after {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 4px;
+  background-color: var(--sec);
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
 }
 
 .link {
@@ -458,7 +530,7 @@ p {
 
 .overlay a {
   border-bottom: 3px solid var(--sec);
-  -webkit-text-stroke: 1px var(--dark-color);
+  -webkit-text-stroke: 0.5px var(--dark-color);
   font-size: 1.8rem;
   position: relative;
   color: var(--darkBlue);
@@ -466,6 +538,8 @@ p {
   pointer-events: all;
   overflow: hidden;
   transition: all var(--transition-speed) ease;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 .overlay a .link,
@@ -546,6 +620,7 @@ p {
   transform: translateY(15px);
   -webkit-transition: all 200ms linear;
   transition: all 200ms linear;
+  z-index: 9999999999999;
 }
 
 .progress-wrap.active-progress {
@@ -629,13 +704,30 @@ p {
     width: 25px;
     height: 25px;
   }
+  
+  .owl-carousel .owl-nav {
+    position: relative;
+    margin-top: 10px;
+  }
+  
+  .owl-carousel .owl-nav button.owl-prev,
+  .owl-carousel .owl-nav button.owl-next {
+    position: relative;
+    margin: 0 5px;
+  }
+  
+  .owl-item img {
+    height: auto !important;
+    width: 100%;
+    max-width: 100%;
+  }
 }
 
 /* responsive menu */
 
 .list-container {
   position: fixed;
-  right: 3px;
+  right: 9px;
   bottom: 20px;
 }
 
@@ -835,6 +927,11 @@ p {
 
   .progress-wrap {
     bottom: 80px;
+    right: 10px;
+  }
+  
+  .owl-carousel {
+    margin-bottom: 20px;
   }
 }
 
@@ -891,7 +988,9 @@ p {
 @media only screen and (max-width: 500px) {
   .links_data {
     display: flex;
-    gap: 40px;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
   body {
@@ -899,28 +998,78 @@ p {
   }
 
   .overlay a {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
 
   .overlay__badge {
-    padding: 5px 30px;
+    padding: 4px 15px;
+    margin-right: 0.5rem;
+    margin-bottom: 8px;
+    font-size: 0.8rem;
   }
 
   .header {
-    padding: 50px 0 35px 0;
+    padding: 30px 0 25px 0;
   }
 
   .project {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
 
   .overlay {
-    padding: 2rem 1.5rem;
+    padding: 1.5rem 1rem;
+    border-radius: 1rem;
   }
 
+  .overlay__title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .owl-carousel .owl-item img,
   .owl-carousel-small .owl-item img {
     width: 100%;
+    height: auto !important;
     margin: 0 auto;
+  }
+  
+  .slick-prev, .slick-next {
+    width: 20px;
+    height: 20px;
+  }
+
+  .overlay__badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .overlay__description p, 
+  .overlay li {
+    font-size: 0.9rem;
+    line-height: 1.4rem;
+  }
+
+  .intro section h4 {
+    font-size: 1.5rem;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  .more-button-list {
+    width: 140px;
+    right: 12px;
+  }
+
+  .more-button-list-item span {
+    font-size: 16px;
+  }
+
+  .more-button-list img {
+    width: 30px;
+    height: 30px;
   }
 }
 
@@ -940,10 +1089,13 @@ ul {
 }
 
 .glass-effect {
-  background: rgba(255, 255, 255, 0.375);
+  background: rgba(255, 255, 255, 0.45);
   box-shadow: 0 0.75rem 2rem 0 rgba(0, 0, 0, 0.1);
   border-radius: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.125);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
 }
 
 .font-style {
@@ -962,7 +1114,29 @@ ul {
 
 @media (max-width: 375px) {
   .dropdown {
-    width: 160px;
+    width: 140px;
+  }
+  
+  .dropdown input {
+    font-size: 16px;
+    padding: 10px 12px;
+  }
+  
+  .dropdown .options .option {
+    font-size: 1rem;
+    padding: 8px 10px;
+  }
+  
+  .overlay__title {
+    font-size: 1.6rem;
+  }
+  
+  .overlay a {
+    font-size: 1.1rem;
+  }
+  
+  body {
+    padding: 0.3rem;
   }
 }
 
@@ -987,10 +1161,10 @@ ul {
   font-weight: 500;
   color: var(--darkBlue);
   cursor: pointer;
-  background: rgba(255, 255, 255, 0.375);
+  background: rgba(255, 255, 255, 0.45);
   box-shadow: 0 0.75rem 2rem 0 rgba(0, 0, 0, 0.1);
   border-radius: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.125);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   position: absolute;
   top: 0;
   left: 0;
@@ -1000,6 +1174,9 @@ ul {
   user-select: none;
   border-radius: 9px;
   outline: 0;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
 }
 
 .dropdown .options {
@@ -1078,6 +1255,12 @@ ul {
 .project.grid-view {
   margin-bottom: 0;
   padding: 40px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project.grid-view:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--card-hover-shadow);
 }
 
 .project.grid-view .grid-image {
@@ -1086,10 +1269,19 @@ ul {
   object-fit: cover;
   border-radius: 10px;
   margin-bottom: 30px;
+  transition: transform 0.3s ease;
+}
+
+.project.grid-view:hover .grid-image {
+  transform: scale(1.03);
 }
 
 .project.grid-view .overlay__badges {
   display: none;
+}
+
+.project.grid-view h2 {
+  margin-top: 0;
 }
 
 @media (max-width: 992px) {
