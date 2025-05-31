@@ -45,6 +45,9 @@
     hsl(var(--hue), 95%, 99%),
     hsl(var(--hue), 95%, 84%)
   );
+  --transition-speed: 0.3s;
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --card-hover-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
 }
 
 ::selection {
@@ -103,14 +106,14 @@ strong {
 }
 
 .overlay {
-  /* position: relative;
-    z-index: -1; */
   width: 100%;
-  padding: 7rem 6rem;
-  background: rgba(255, 255, 255, 0.375);
-  box-shadow: 0 0.75rem 2rem 0 rgba(0, 0, 0, 0.1);
-  border-radius: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.125);
+  padding: 3rem 4rem;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: var(--card-shadow);
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all var(--transition-speed) ease;
+  margin-bottom: 2rem;
 }
 
 .project {
@@ -176,17 +179,19 @@ strong {
 
 .overlay__btn {
   width: 40%;
-  height: 2.5rem;
+  height: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--light-color);
   background: var(--dark-color);
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   outline-color: hsl(var(--hue), 95%, 50%);
+  transition: all var(--transition-speed) ease;
+  cursor: pointer;
 }
 
 .overlay__btn--transparent {
@@ -195,6 +200,7 @@ strong {
   border: 2px solid var(--dark-color);
   border-width: 2px;
   margin-right: 0.75rem;
+  transition: all var(--transition-speed) ease;
 }
 
 .overlay__btn-emoji {
@@ -210,11 +216,12 @@ strong {
   position: fixed;
   right: 0;
   top: 50%;
-  transform: translate(0, -50%);
+  transform: translate(0, -50%) scale(0.8);
+  transform-origin: right center;
   display: flex;
   flex-direction: column;
   padding: 10px 5px;
-  zoom: 0.8;
+  /* zoom: 0.8; */
 }
 
 .menu img:hover {
@@ -282,16 +289,17 @@ h1 {
 
 .overlay__badge {
   margin-bottom: 10px;
-  font-size: 0.875rem;
+  font-size: 0.9rem;
   font-weight: 600;
-  background: transparent;
+  background: rgba(105, 210, 234, 0.1);
   color: var(--dark-color);
-  border: 3px solid var(--dark-color);
+  border: 2px solid var(--sec);
   border-radius: 2rem;
   outline-color: hsl(var(--hue), 95%, 50%);
   margin-right: 0.75rem;
-  padding: 10px 50px;
+  padding: 8px 20px;
   cursor: text !important;
+  transition: all var(--transition-speed) ease;
 }
 
 .download {
@@ -449,14 +457,15 @@ p {
 }
 
 .overlay a {
-  border-bottom: 4px solid #17bde4;
+  border-bottom: 3px solid var(--sec);
   -webkit-text-stroke: 1px var(--dark-color);
-  font-size: 2rem;
+  font-size: 1.8rem;
   position: relative;
-  color: #0a002e;
+  color: var(--darkBlue);
   text-decoration: none;
   pointer-events: all;
   overflow: hidden;
+  transition: all var(--transition-speed) ease;
 }
 
 .overlay a .link,
@@ -480,7 +489,9 @@ p {
 }
 
 .slick-list {
-  zoom: 0.7;
+  /* zoom: 0.7; */
+  transform: scale(0.7);
+  transform-origin: center;
 }
 
 .slider,
@@ -947,93 +958,104 @@ ul {
   border-radius: 7px;
   position: relative;
   cursor: pointer;
-  @media (max-width: 375px) {
+}
+
+@media (max-width: 375px) {
+  .dropdown {
     width: 160px;
   }
-  &::before {
-    content: "";
-    position: absolute;
-    right: 16px;
-    top: calc(50% - 6px);
-    z-index: 9999;
-    width: 12px;
-    height: 12px;
-    border: 2px solid #999;
-    border-top: transparent;
-    border-right: transparent;
-    transform: rotate(-45deg) translateY(-50%);
-    transform-origin: center;
-    pointer-events: none;
-    transition: all 0.25s;
-  }
-  input {
-    font-weight: 500;
-    color: var(--darkBlue);
-    cursor: pointer;
-    background: rgba(255, 255, 255, 0.375);
-    box-shadow: 0 0.75rem 2rem 0 rgba(0, 0, 0, 0.1);
-    border-radius: 2rem;
-    border: 1px solid rgba(255, 255, 255, 0.125);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 14px 16px;
-    font-size: 18px;
-    user-select: none;
-    border-radius: 9px;
-    outline: 0;
-  }
-  .options {
-    background: rgb(255 255 255 / 90%) !important;
-    list-style: none;
-    position: absolute;
-    overflow: hidden;
-    width: 100%;
-    top: 70px;
-    border: 1px solid #ddd;
-    border-radius: 9px;
-    outline: none;
-    opacity: 0;
-    transform: translateY(-50px);
-    transition: all 0.35s;
-    visibility: hidden;
-    color: var(--darkBlue);
-    padding-left: 0;
-    .option {
-      font-size: 1.2rem;
-      line-height: 1.75rem;
-      font-weight: 500;
-      text-align: left;
-      padding: 10px 14px;
-      transition: all 0.25s ease;
-      color: var(--first);
-      &:not(:last-of-type) {
-        margin-bottom: 5px;
-      }
-      &:hover {
-        color: #fff;
-        background: var(--sec);
-      }
-    }
-  }
-  &.opened {
-    &::before {
-      top: 50%;
-      transform: rotate(135deg) translateY(50%);
-      border-color: var(--sec);
-    }
-    input {
-      border-color: var(--sec);
-      color: var(--sec);
-    }
-    .options {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-      border: 1px solid #eee;
-    }
-  }
+}
+
+.dropdown::before {
+  content: "";
+  position: absolute;
+  right: 16px;
+  top: calc(50% - 6px);
+  z-index: 9999;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #999;
+  border-top: transparent;
+  border-right: transparent;
+  transform: rotate(-45deg) translateY(-50%);
+  transform-origin: center;
+  pointer-events: none;
+  transition: all 0.25s;
+}
+
+.dropdown input {
+  font-weight: 500;
+  color: var(--darkBlue);
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.375);
+  box-shadow: 0 0.75rem 2rem 0 rgba(0, 0, 0, 0.1);
+  border-radius: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 18px;
+  user-select: none;
+  border-radius: 9px;
+  outline: 0;
+}
+
+.dropdown .options {
+  background: rgb(255 255 255 / 90%) !important;
+  list-style: none;
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  top: 70px;
+  border: 1px solid #ddd;
+  border-radius: 9px;
+  outline: none;
+  opacity: 0;
+  transform: translateY(-50px);
+  transition: all 0.35s;
+  visibility: hidden;
+  color: var(--darkBlue);
+  padding-left: 0;
+}
+
+.dropdown .options .option {
+  font-size: 1.2rem;
+  line-height: 1.75rem;
+  font-weight: 500;
+  text-align: left;
+  padding: 10px 14px;
+  transition: all 0.25s ease;
+  color: var(--first);
+}
+
+.dropdown .options .option:not(:last-of-type) {
+  margin-bottom: 5px;
+}
+
+.dropdown .options .option:hover {
+  color: #fff;
+  background: var(--sec);
+}
+
+/* Styles for when the dropdown is opened */
+.dropdown.opened::before {
+  top: 50%;
+  transform: rotate(135deg) translateY(50%);
+  border-color: var(--sec);
+}
+
+.dropdown.opened input {
+  border-color: var(--sec);
+  color: var(--sec);
+}
+
+.dropdown.opened .options {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  border: 1px solid #eee;
 }
 
 .count {

@@ -7,6 +7,16 @@ menuLinks?.map((i) =>
     });
     i.className += " active";
     i.children[0].src = i.children[0].src.split(".png")[0] + "_filled.png";
+    
+    // Add smooth scroll to section
+    const targetId = this.getAttribute('href');
+    const targetElement = document.querySelector(targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
   })
 );
 
@@ -91,7 +101,15 @@ $(document).ready(function () {
 });
 
 document.querySelector(".more-button").addEventListener("click", function () {
+  this.classList.toggle('active');
   document.querySelector(".list-container").classList.toggle("menu-active");
+  
+  // Add animation class for better feedback
+  if (this.classList.contains('active')) {
+    this.style.transform = 'rotate(180deg)';
+  } else {
+    this.style.transform = 'rotate(0deg)';
+  }
 });
 
 $(document).ready(function () {
