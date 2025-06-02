@@ -737,28 +737,28 @@ p {
 }
 
 .list-container.menu-active .more-button-list-item {
-  -webkit-animation: fadeInItem 0.6s 0.2s forwards;
-  animation: fadeInItem 0.6s 0.2s forwards;
+  -webkit-animation: fadeInItem 0.2s 0.1s forwards;
+  animation: fadeInItem 0.2s 0.1s forwards;
 }
 
 .list-container.menu-active .more-button-list-item:nth-child(2) {
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+}
+
+.list-container.menu-active .more-button-list-item:nth-child(3) {
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+}
+
+.list-container.menu-active .more-button-list-item:nth-child(4) {
   -webkit-animation-delay: 0.4s;
   animation-delay: 0.4s;
 }
 
-.list-container.menu-active .more-button-list-item:nth-child(3) {
-  -webkit-animation-delay: 0.6s;
-  animation-delay: 0.6s;
-}
-
-.list-container.menu-active .more-button-list-item:nth-child(4) {
-  -webkit-animation-delay: 0.8s;
-  animation-delay: 0.8s;
-}
-
 .list-container.menu-active .more-button-list-item:nth-child(5) {
-  -webkit-animation-delay: 1s;
-  animation-delay: 1s;
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
 }
 
 .list-container.menu-active .menu-icon-wrapper {
@@ -806,7 +806,7 @@ p {
   list-style-type: none;
   width: 160px;
   padding: 0;
-  padding: 6px;
+  padding: 2px;
   position: absolute;
   right: 16px;
   bottom: 10px;
@@ -864,9 +864,13 @@ p {
   color: var(--dark-color);
 }
 
-.more-button-list-item .active span {
+.more-button-list-item a.active span {
   color: var(--dark-color);
   font-weight: bold;
+}
+
+.more-button-list-item a.active img {
+  filter: brightness(0.8);
 }
 
 @keyframes fadeInItem {

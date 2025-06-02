@@ -112,6 +112,36 @@ document.querySelector(".more-button").addEventListener("click", function () {
   }
 });
 
+// Add event listeners for mobile menu links
+const mobileMenuLinks = Array.from(document.querySelectorAll(".more-button-list .links"));
+mobileMenuLinks?.map((i) =>
+  i.addEventListener("click", function () {
+    // Remove active class from all mobile menu links
+    [].forEach.call(document.querySelectorAll(".more-button-list .active"), (i) => {
+      i.classList.remove("active");
+      i.children[0].src = i.children[0]?.src?.replace("_filled", "");
+    });
+    // Add active class to clicked link
+    i.classList.add("active");
+    i.children[0].src = i.children[0].src.split(".png")[0] + "_filled.png";
+    
+    // Close the mobile menu after clicking a link
+    document.querySelector(".list-container").classList.remove("menu-active");
+    document.querySelector(".more-button").classList.remove('active');
+    document.querySelector(".more-button").style.transform = 'rotate(0deg)';
+    
+    // Add smooth scroll to section
+    const targetId = this.getAttribute('href');
+    const targetElement = document.querySelector(targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  })
+);
+
 $(document).ready(function () {
   var progressPath = document.querySelector(".progress-wrap path");
   var pathLength = progressPath.getTotalLength();
