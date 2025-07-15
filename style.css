@@ -40,11 +40,9 @@
   --complimentary1: hsl(var(--hue-complimentary1), 95%, 50%);
   --complimentary2: hsl(var(--hue-complimentary2), 95%, 50%);
   --font-family: "Poppins", system-ui;
-  --bg-gradient: linear-gradient(
-    to bottom,
-    hsl(var(--hue), 95%, 99%),
-    hsl(var(--hue), 95%, 84%)
-  );
+  --bg-gradient: linear-gradient(to bottom,
+      hsl(var(--hue), 95%, 99%),
+      hsl(var(--hue), 95%, 84%));
   --transition-speed: 0.3s;
   --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   --card-hover-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
@@ -155,12 +153,10 @@ strong {
 .text-gradient {
   display: inline-block;
   background-color: #4158d0;
-  background-image: linear-gradient(
-    43deg,
-    #4158d0 0%,
-    #c850c0 46%,
-    #ffcc70 100%
-  );
+  background-image: linear-gradient(43deg,
+      #4158d0 0%,
+      #c850c0 46%,
+      #ffcc70 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   -moz-background-clip: text;
@@ -295,6 +291,18 @@ h1 {
   .mask {
     transform: translateY(-8px);
     height: 56px;
+  }
+
+  .config {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media only screen and (max-width: 840px) {
+  .filters {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 
@@ -484,12 +492,14 @@ p {
       calc(var(--start) + 10px) calc(var(--start) + 10px) 0px #e9019a,
       calc(var(--start) + 15px) calc(var(--start) + 15px) 0px #f5b57e;
   }
+
   50% {
     text-shadow: var(--start) var(--start) 0px #69d2ea,
       calc(var(--start) + 6px) calc(var(--start) + 6px) 0px #e601c0,
       calc(var(--start) + 12px) calc(var(--start) + 12px) 0px #e9019a,
       calc(var(--start) + 18px) calc(var(--start) + 18px) 0px #f5b57e;
   }
+
   100% {
     text-shadow: var(--start) var(--start) 0px #69d2ea,
       calc(var(--start) + 5px) calc(var(--start) + 5px) 0px #e601c0,
@@ -704,18 +714,18 @@ p {
     width: 25px;
     height: 25px;
   }
-  
+
   .owl-carousel .owl-nav {
     position: relative;
     margin-top: 10px;
   }
-  
+
   .owl-carousel .owl-nav button.owl-prev,
   .owl-carousel .owl-nav button.owl-next {
     position: relative;
     margin: 0 5px;
   }
-  
+
   .owl-item img {
     height: auto !important;
     width: 100%;
@@ -933,7 +943,7 @@ p {
     bottom: 80px;
     right: 10px;
   }
-  
+
   .owl-carousel {
     margin-bottom: 20px;
   }
@@ -1036,8 +1046,9 @@ p {
     height: auto !important;
     margin: 0 auto;
   }
-  
-  .slick-prev, .slick-next {
+
+  .slick-prev,
+  .slick-next {
     width: 20px;
     height: 20px;
   }
@@ -1048,7 +1059,7 @@ p {
     justify-content: flex-start;
   }
 
-  .overlay__description p, 
+  .overlay__description p,
   .overlay li {
     font-size: 0.9rem;
     line-height: 1.4rem;
@@ -1114,31 +1125,35 @@ ul {
   border-radius: 7px;
   position: relative;
   cursor: pointer;
+
+  .options {
+    z-index: 999;
+  }
 }
 
 @media (max-width: 375px) {
   .dropdown {
     width: 140px;
   }
-  
+
   .dropdown input {
     font-size: 16px;
     padding: 10px 12px;
   }
-  
+
   .dropdown .options .option {
     font-size: 1rem;
     padding: 8px 10px;
   }
-  
+
   .overlay__title {
     font-size: 1.6rem;
   }
-  
+
   .overlay a {
     font-size: 1.1rem;
   }
-  
+
   body {
     padding: 0.3rem;
   }
@@ -1278,6 +1293,41 @@ ul {
 
 .project.grid-view:hover .grid-image {
   transform: scale(1.03);
+}
+
+.select2-container .select2-selection--single {
+  height: 58px !important;
+}
+
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  line-height: 58px !important;
+  text-align: left;
+  padding: 0 16px !important;
+  color: var(--darkBlue) !important;
+  font-weight: 500 !important;
+}
+
+.select2-container--default .select2-selection--single {
+  background: rgba(255, 255, 255, 0.45) !important;
+  box-shadow: 0 0.75rem 2rem 0 rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  font-size: 18px !important;
+  border-radius: 9px !important;
+  outline: 0 !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 58px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  right: 10px !important;
+}
+
+.select2-selection__clear {
+  display: none;
 }
 
 .project.grid-view .overlay__badges {

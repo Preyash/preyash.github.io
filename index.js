@@ -199,6 +199,41 @@ const toggleDropdown = (event) => {
   dropdown.classList.toggle("opened");
 };
 
+
+// Initialize Select2
+$(document).ready(function() {
+  $('#project-filter').select2({
+    placeholder: "Filter by technology",
+    allowClear: true
+  });
+
+  // Populate filter options
+  const uniqueBadges = new Set();
+  document.querySelectorAll('.overlay__badge').forEach(badge => {
+    uniqueBadges.add(badge.textContent.trim());
+  });
+
+  const filterSelect = $('#project-filter');
+  uniqueBadges.forEach(badgeText => {
+    filterSelect.append(new Option(badgeText, badgeText));
+  });
+
+  // Filter logic
+  $('#project-filter').on('change', function() {
+    const selectedBadge = $(this).val();
+    
+    $('.project').each(function() {
+      const projectBadges = $(this).find('.overlay__badge').map(function() { return $(this).text().trim(); }).get();
+      
+      if (selectedBadge === 'all' || projectBadges.includes(selectedBadge)) {
+        $(this).show();
+      } else {
+        $(this).hide();
+      }
+    });
+  });
+});
+
 const selectOption = (event) => {
   input.value = event.currentTarget.textContent;
 
