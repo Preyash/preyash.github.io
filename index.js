@@ -207,15 +207,24 @@ $(document).ready(function() {
     allowClear: true
   });
 
-  // Populate filter options
-  const uniqueBadges = new Set();
-  document.querySelectorAll('.overlay__badge').forEach(badge => {
-    uniqueBadges.add(badge.textContent.trim());
+  // Populate filter options with counts
+  const badgeCounts = {};
+  document.querySelectorAll('.project').forEach(project => {
+    const badges = project.querySelectorAll('.overlay__badge');
+    badges.forEach(badge => {
+      const badgeText = badge.textContent.trim();
+      badgeCounts[badgeText] = (badgeCounts[badgeText] || 0) + 1;
+    });
   });
 
   const filterSelect = $('#project-filter');
-  uniqueBadges.forEach(badgeText => {
-    filterSelect.append(new Option(badgeText, badgeText));
+  // Add the "All" option first
+  filterSelect.append(new Option('All', 'all'));
+  
+  // Add other options with counts
+  Object.keys(badgeCounts).sort().forEach(badgeText => {
+    const optionText = `${badgeText} (${badgeCounts[badgeText]})`;
+    filterSelect.append(new Option(optionText, badgeText));
   });
 
   // Filter logic
@@ -232,6 +241,7 @@ $(document).ready(function() {
       }
     });
   });
+
 });
 
 const selectOption = (event) => {
