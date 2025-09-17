@@ -202,11 +202,73 @@ const toggleDropdown = (event) => {
 
 // Initialize Select2
 $(document).ready(function() {
+  // Add icons to badges
+  document.querySelectorAll('.overlay__badge').forEach(badge => {
+    const badgeText = badge.textContent.trim();
+    let iconName = badgeText.toLowerCase().replace(/\./g, '').replace(/\s+/g, '-');
+    
+    // Special case mappings for specific technologies
+    const specialMappings = {
+      'reactjs': 'react',
+      'react.js': 'react',
+      'nextjs': 'nextjs',
+      'vuejs': 'vue',
+      'nuxtjs': 'nuxt',
+      'javascript': 'javascript',
+      'jquery': 'jquery',
+      'tailwind': 'tailwind',
+      'bootstrap': 'bootstrap',
+      'figma': 'figma',
+      'mysql': 'mysql',
+      'laravel': 'laravel',
+      'vuex': 'vuex',
+      'redux': 'redux',
+      'html': 'html-5',
+      'css': 'css',
+      'material-ui': 'material-ui',
+      'google-maps': 'google-maps',
+      'api-integration': 'api'
+    };
+    
+    // Check for special mappings
+    if (specialMappings[iconName]) {
+      iconName = specialMappings[iconName];
+    }
+    
+    // Try different extensions
+    const extensions = ['.png', '.svg', '.webp'];
+    let imgElement = null;
+    
+    for (const ext of extensions) {
+      const imgPath = `./img/${iconName}${ext}`;
+      const tempImg = new Image();
+      tempImg.src = imgPath;
+      
+      // Check if image exists
+      tempImg.onload = function() {
+        if (!imgElement) {
+          imgElement = document.createElement('img');
+          imgElement.src = imgPath;
+          imgElement.alt = badgeText;
+          imgElement.style.maxWidth = '24px';
+          imgElement.style.maxHeight = '24px';
+          imgElement.style.marginRight = '8px';
+          imgElement.style.verticalAlign = 'middle';
+          badge.prepend(imgElement);
+        }
+      };
+    }
+  });
+  
   $('#project-filter').select2({
     placeholder: "Filter by technology",
-    allowClear: true
+    allowClear: true,
+    width: '200px'
   });
-
+  
+  // Set the default value to null to show the placeholder
+  $('#project-filter').val(null).trigger('change');
+  
   // Populate filter options with counts
   const badgeCounts = {};
   document.querySelectorAll('.project').forEach(project => {

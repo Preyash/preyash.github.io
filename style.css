@@ -325,11 +325,21 @@ h1 {
   cursor: text !important;
   transition: all var(--transition-speed) ease;
   letter-spacing: 0.5px;
+  display: flex;
+  justify-content: center;
+  align-items: end;
 }
 
 .overlay__badge:hover {
   background: rgba(105, 210, 234, 0.2);
   transform: translateY(-2px);
+}
+
+.overlay__badge img {
+  max-width: 16px;
+  max-height: 16px;
+  margin-right: 5px;
+  vertical-align: middle;
 }
 
 .download {
