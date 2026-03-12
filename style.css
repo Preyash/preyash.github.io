@@ -1555,6 +1555,10 @@ ul {
   transform: scale(1.03);
 }
 
+.project.grid-view .row {
+  display: none;
+}
+
 .select2-container .select2-selection--single {
   height: 58px !important;
 }
