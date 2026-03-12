@@ -152,9 +152,22 @@ $(document).ready(function () {
   progressPath.style.transition = progressPath.style.WebkitTransition =
     "stroke-dashoffset 10ms linear";
   var updateProgress = function () {
-    var scroll = $(window).scrollTop();
-    var height = $(document).height() - $(window).height();
-    var progress = pathLength - (scroll * pathLength) / height;
+    var scroll = window.pageYOffset || document.documentElement.scrollTop;
+    var docHeight = document.documentElement.scrollHeight;
+    var winHeight = window.innerHeight;
+    var height = docHeight - winHeight;
+    
+    // Ensure we don't divide by zero
+    if (height <= 0) {
+      progressPath.style.strokeDashoffset = pathLength;
+      return;
+    }
+
+    var percentage = scroll / height;
+    // Cap at 1 to ensure it doesn't overfill, and use a small buffer for the bottom
+    if (scroll + winHeight >= docHeight - 2) percentage = 1;
+    
+    var progress = pathLength - (percentage * pathLength);
     progressPath.style.strokeDashoffset = progress;
   };
   updateProgress();

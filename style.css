@@ -51,49 +51,147 @@
 }
 
 body.dark-mode {
-  --dark-color: hsl(var(--hue), 95%, 90%);
-  --light-color: hsl(var(--hue), 100%, 5%);
-  --darkBlue: #e0e0e0;
-  --first: #e0e0e0;
-  --bg-gradient: linear-gradient(to bottom, #05001a, #0a002e);
-  --card-background: rgba(10, 0, 46, 0.7);
-  --card-border: rgba(255, 255, 255, 0.1);
+  --dark-color: #f0f6fc;
+  --light-color: #0d1117;
+  --darkBlue: #ffffff;
+  --first: #ffffff;
+  --bg-gradient: linear-gradient(to bottom, #0d1117, #010409);
+  --card-background: #161b22;
+  --card-border: #30363d;
+  --text-primary: #f0f6fc;
+  --text-secondary: #8b949e;
 }
 
 body {
   transition: background-color 0.5s ease, color 0.5s ease;
+  zoom: 0.8;
 }
 
 body.dark-mode {
-  background-color: #05001a;
-  background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("./img/blur.png");
+  background-color: #0d1117;
+  background-image: none; /* Removed the bright blur for better contrast */
+  color: var(--text-primary);
 }
 
 body.dark-mode .overlay {
   background: var(--card-background);
   border: 1px solid var(--card-border);
-  color: var(--dark-color);
+  color: var(--text-primary);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode h1, 
+body.dark-mode h2, 
+body.dark-mode h4,
+body.dark-mode .name,
+body.dark-mode .link a {
+  color: #ffffff !important;
+}
+
+body.dark-mode p,
+body.dark-mode li {
+  color: var(--text-secondary);
 }
 
 body.dark-mode .glass-effect,
 body.dark-mode .transparent {
-  background: rgba(10, 0, 46, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #161b22;
+  border: 1px solid #30363d;
 }
 
-body.dark-mode .dropdown .options {
-  background: rgba(10, 0, 46, 0.95) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--dark-color);
+/* Select2 Dark Mode Fixes */
+body.dark-mode .select2-container--default .select2-selection--single {
+  background-color: #161b22 !important;
+  border: 1px solid #30363d !important;
+  color: #f0f6fc !important;
 }
 
-body.dark-mode .dropdown .options .option {
-  color: var(--dark-color);
+body.dark-mode .select2-container--default .select2-selection--single .select2-selection__rendered {
+  color: #f0f6fc !important;
 }
 
-body.dark-mode .dropdown input {
-  color: var(--dark-color);
-  background: rgba(10, 0, 46, 0.6);
+body.dark-mode .select2-dropdown {
+  background-color: #161b22 !important;
+  border: 1px solid #30363d !important;
+  color: #f0f6fc !important;
+}
+
+body.dark-mode .select2-search--dropdown .select2-search__field {
+  background-color: #0d1117 !important;
+  border: 1px solid #30363d !important;
+  color: #f0f6fc !important;
+}
+
+body.dark-mode .select2-container--default .select2-results__option {
+  color: #8b949e;
+}
+
+body.dark-mode .select2-container--default .select2-results__option--highlighted[aria-selected] {
+  background-color: #69d2ea !important;
+  color: #000 !important;
+}
+
+body.dark-mode .select2-container--default .select2-selection--single .select2-selection__arrow b {
+  border-color: #8b949e transparent transparent transparent !important;
+}
+
+body.dark-mode .menu {
+  background: rgba(22, 27, 34, 0.8) !important;
+  border-color: #30363d !important;
+}
+
+body.dark-mode .menu .links img {
+  filter: invert(1) brightness(2);
+}
+
+body.dark-mode .menu .active img {
+  filter: invert(72%) sepia(85%) saturate(545%) hue-rotate(155deg) brightness(101%) contrast(101%);
+}
+
+body.dark-mode .count {
+  background-color: #69d2ea;
+  color: #000;
+}
+
+body.dark-mode .overlay__badge {
+  background: rgba(105, 210, 234, 0.1);
+  color: #69d2ea;
+  border: 1px solid rgba(105, 210, 234, 0.3);
+}
+
+body.dark-mode .overlay__badge:hover {
+  background: #69d2ea;
+  color: #000;
+}
+
+body.dark-mode .view .links img {
+  filter: invert(1) brightness(1.5);
+}
+
+body.dark-mode .view .links.active img {
+  filter: invert(1) brightness(2);
+}
+
+body.dark-mode .select2-container--default .select2-selection--single .select2-selection__arrow b {
+  border-color: #f0f6fc transparent transparent transparent !important;
+}
+
+body.dark-mode .contact .links_data img {
+  filter: invert(1) brightness(2);
+}
+
+body.dark-mode .progress-wrap {
+  box-shadow: inset 0 0 0 2px rgba(105, 210, 234, 0.2);
+}
+
+body.dark-mode .progress-wrap svg.progress-circle path {
+  stroke: #69d2ea;
+}
+
+body.dark-mode .progress-wrap::after,
+body.dark-mode .progress-wrap::before {
+  color: #69d2ea;
+  -webkit-text-fill-color: #69d2ea;
 }
 
 /* Theme Toggle */
