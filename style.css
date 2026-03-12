@@ -48,6 +48,8 @@
   --transition-speed: 0.3s;
   --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   --card-hover-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+  --scrollbar-thumb: hsl(var(--hue), 100%, 9%);
+  --scrollbar-track: #d9d9d9;
 }
 
 body.dark-mode {
@@ -60,11 +62,13 @@ body.dark-mode {
   --card-border: #30363d;
   --text-primary: #f0f6fc;
   --text-secondary: #8b949e;
+  --scrollbar-thumb: #69d2ea;
+  --scrollbar-track: #161b22;
 }
 
 body {
   transition: background-color 0.5s ease, color 0.5s ease;
-  zoom: 0.8;
+  /* zoom: 0.8; */
 }
 
 body.dark-mode {
@@ -255,18 +259,21 @@ body.dark-mode .theme-toggle .moon {
 }
 
 ::-webkit-scrollbar-track {
-  background: #d9d9d9;
+  background: var(--scrollbar-track, #d9d9d9);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--dark-color);
+  background: var(--scrollbar-thumb, var(--dark-color));
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #6667ab;
+  background: var(--scrollbar-thumb, #6667ab);
+  opacity: 0.8;
 }
+
+/* Dark mode scrollbar — handled via CSS variables above, no class needed */
 
 * {
   margin: 0;
@@ -435,7 +442,6 @@ strong {
   display: flex;
   flex-direction: column;
   padding: 10px 5px;
-  /* zoom: 0.8; */
 }
 
 .menu img:hover {
@@ -1746,4 +1752,301 @@ ul {
 .select2-container--default .select2-results__option[aria-selected=true] {
   background-color: #69d2ea !important;
   color: #fff !important;
+}
+
+/* ===== SlimSelect Custom Styling ===== */
+
+/* Main trigger button */
+.ss-main {
+  background: rgba(255, 255, 255, 0.6) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  border-radius: 12px !important;
+  padding: 8px 14px !important;
+  min-height: 46px !important;
+  font-family: var(--font-family) !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  color: var(--darkBlue) !important;
+  cursor: pointer !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+  transition: all 0.25s ease !important;
+  min-width: 250px;
+}
+
+
+.ss-main:focus {
+  outline: none !important;
+  border-color: var(--sec) !important;
+  box-shadow: 0 0 0 3px rgba(105, 210, 234, 0.15) !important;
+}
+
+.ss-main .ss-values {
+  display: flex;
+  align-items: center;
+}
+
+/* Selected value text */
+.ss-main .ss-values .ss-single {
+  color: var(--darkBlue) !important;
+  font-weight: 500 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  flex: none;
+}
+
+.ss-main .ss-values .ss-placeholder {
+  color: #999 !important;
+  font-weight: 400 !important;
+  display: flex
+}
+
+/* Arrow icon */
+.ss-main .ss-arrow {
+  margin-left: 8px !important;
+}
+
+.ss-main .ss-arrow path {
+  stroke: #888 !important;
+  stroke-width: 2 !important;
+  transition: stroke 0.25s ease !important;
+}
+
+.ss-main:hover .ss-arrow path,
+.ss-main:focus .ss-arrow path {
+  stroke: var(--sec) !important;
+}
+
+/* Deselect button */
+.ss-main .ss-deselect {
+  margin-right: 4px !important;
+}
+
+.ss-main .ss-deselect svg {
+  width: 10px !important;
+  height: 10px !important;
+}
+
+.ss-main .ss-deselect svg path {
+  stroke: #999 !important;
+  stroke-width: 2 !important;
+}
+
+.ss-main .ss-deselect:hover svg path {
+  stroke: #e74c3c !important;
+}
+
+/* Dropdown content panel */
+.ss-content {
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+  overflow: hidden !important;
+  background: #fff !important;
+  margin-top: -40px !important;
+  z-index: 10000 !important;
+  padding: 0;
+}
+
+.ss-content.ss-dir-above {
+  margin-bottom: -10px !important;
+}
+
+.ss-content.ss-open {
+  animation: ssDropIn 0.2s ease forwards;
+}
+
+@keyframes ssDropIn {
+  from {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Search input inside dropdown */
+.ss-content .ss-search {
+  padding: 8px !important;
+}
+
+.ss-content .ss-search input {
+  font-family: var(--font-family) !important;
+  font-size: 14px !important;
+  border: 1px solid #e0e0e0 !important;
+  border-radius: 8px !important;
+  padding: 8px 12px !important;
+  background: #f8f9fa !important;
+  color: var(--darkBlue) !important;
+  transition: border-color 0.25s ease !important;
+}
+
+.ss-content .ss-search input:focus {
+  outline: none !important;
+  border-color: var(--sec) !important;
+  box-shadow: 0 0 0 3px rgba(105, 210, 234, 0.1) !important;
+}
+
+/* Options list */
+.ss-content .ss-list {
+  padding: 4px !important;
+}
+
+/* Individual option */
+.ss-content .ss-list .ss-option {
+  font-family: var(--font-family) !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  color: var(--first) !important;
+  padding: 10px 14px !important;
+  border-radius: 8px !important;
+  margin: 2px 0 !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+}
+
+/* Option hover */
+.ss-content .ss-list .ss-option:hover:not(.ss-disabled) {
+  background: rgba(105, 210, 234, 0.12) !important;
+  color: var(--first) !important;
+  border: none;
+}
+
+/* Highlighted option (keyboard navigation) */
+.ss-content .ss-list .ss-option.ss-highlighted {
+  background: rgba(105, 210, 234, 0.12) !important;
+  color: var(--first) !important;
+}
+
+/* Selected option */
+.ss-content .ss-list .ss-option:not(.ss-disabled).ss-selected {
+  background: var(--sec) !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+}
+
+/* Disabled option */
+.ss-content .ss-list .ss-option.ss-disabled {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+}
+
+/* ===== SlimSelect Dark Mode ===== */
+
+body.dark-mode .ss-main {
+  background: #161b22 !important;
+  border-color: #30363d !important;
+  color: #f0f6fc !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.dark-mode .ss-main:hover {
+  border-color: rgba(105, 210, 234, 0.4) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+}
+
+body.dark-mode .ss-main:focus {
+  border-color: var(--sec) !important;
+  box-shadow: 0 0 0 3px rgba(105, 210, 234, 0.2) !important;
+}
+
+body.dark-mode .ss-main .ss-values .ss-single {
+  color: #f0f6fc !important;
+}
+
+body.dark-mode .ss-main .ss-values .ss-placeholder {
+  color: #8b949e !important;
+}
+
+body.dark-mode .ss-main .ss-arrow path {
+  stroke: #8b949e !important;
+}
+
+body.dark-mode .ss-main:hover .ss-arrow path,
+body.dark-mode .ss-main:focus .ss-arrow path {
+  stroke: var(--sec) !important;
+}
+
+body.dark-mode .ss-main .ss-deselect svg path {
+  stroke: #8b949e !important;
+}
+
+body.dark-mode .ss-content {
+  background: #161b22 !important;
+  border-color: #30363d !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5) !important;
+}
+
+body.dark-mode .ss-content .ss-search input {
+  background: #0d1117 !important;
+  border-color: #30363d !important;
+  color: #f0f6fc !important;
+}
+
+body.dark-mode .ss-content .ss-search input:focus {
+  border-color: var(--sec) !important;
+  box-shadow: 0 0 0 3px rgba(105, 210, 234, 0.15) !important;
+}
+
+body.dark-mode .ss-content .ss-list .ss-option {
+  color: #c9d1d9 !important;
+}
+
+body.dark-mode .ss-content .ss-list .ss-option:hover:not(.ss-disabled) {
+  background: rgba(105, 210, 234, 0.1) !important;
+  color: #f0f6fc !important;
+}
+
+body.dark-mode .ss-content .ss-list .ss-option.ss-highlighted {
+  background: rgba(105, 210, 234, 0.1) !important;
+  color: #f0f6fc !important;
+}
+
+body.dark-mode .ss-content .ss-list .ss-option:not(.ss-disabled).ss-selected {
+  background: var(--sec) !important;
+  color: #000 !important;
+}
+
+/* Carousel arrows in dark mode */
+body.dark-mode .slick-prev,
+body.dark-mode .slick-next {
+  filter: invert(1) brightness(2);
+}
+
+/* ===== SlimSelect Responsive ===== */
+
+@media only screen and (max-width: 840px) {
+  .ss-main {
+    min-height: 42px !important;
+    font-size: 14px !important;
+    padding: 6px 12px !important;
+    border-radius: 10px !important;
+  }
+
+  .ss-content .ss-list .ss-option {
+    font-size: 13px !important;
+    padding: 8px 12px !important;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .ss-main {
+    min-height: 38px !important;
+    font-size: 13px !important;
+    padding: 5px 10px !important;
+    border-radius: 9px !important;
+  }
+
+  .ss-content {
+    border-radius: 10px !important;
+  }
+
+  .ss-content .ss-list .ss-option {
+    font-size: 12px !important;
+    padding: 7px 10px !important;
+    border-radius: 6px !important;
+  }
 }

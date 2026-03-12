@@ -262,32 +262,7 @@ $(document).ready(function() {
     }
   });
   
-  // Initialize sort dropdown as Select2 (no search)
-  $('#sort-filter').select2({
-    minimumResultsForSearch: Infinity,
-    width: '200px'
-  });
-
-  // Sort change handler
-  $('#sort-filter').on('change', function() {
-    const selectedValue = $(this).val();
-    projects = [...originalProjects];
-    if (selectedValue === "1") {
-      projects.reverse();
-    }
-    projects.forEach((project) => project.parentNode.appendChild(project));
-  });
-
-  $('#project-filter').select2({
-    placeholder: "Filter by technology",
-    allowClear: true,
-    width: '200px'
-  });
-  
-  // Set the default value to null to show the placeholder
-  $('#project-filter').val(null).trigger('change');
-  
-  // Populate filter options with counts
+  // Populate filter options with counts BEFORE initializing SlimSelect
   const badgeCounts = {};
   document.querySelectorAll('.project').forEach(project => {
     const badges = project.querySelectorAll('.overlay__badge');
@@ -297,27 +272,59 @@ $(document).ready(function() {
     });
   });
 
-  const filterSelect = $('#project-filter');
+  const filterSelect = document.getElementById('project-filter');
   // Add the "All" option first
-  filterSelect.append(new Option('All', 'all'));
+  const allOption = document.createElement('option');
+  allOption.value = 'all';
+  allOption.text = 'All';
+  filterSelect.appendChild(allOption);
   
   // Add other options with counts
   Object.keys(badgeCounts).sort().forEach(badgeText => {
-    const optionText = `${badgeText} (${badgeCounts[badgeText]})`;
-    filterSelect.append(new Option(optionText, badgeText));
+    const option = document.createElement('option');
+    option.value = badgeText;
+    option.text = `${badgeText} (${badgeCounts[badgeText]})`;
+    filterSelect.appendChild(option);
+  });
+
+  // Initialize sort dropdown as SlimSelect (no search)
+  const sortFilter = new SlimSelect({
+    select: '#sort-filter',
+    settings: {
+      showSearch: false,
+    }
+  });
+
+  // Sort change handler
+  document.getElementById('sort-filter').addEventListener('change', function() {
+    const selectedValue = this.value;
+    projects = [...originalProjects];
+    if (selectedValue === "1") {
+      projects.reverse();
+    }
+    projects.forEach((project) => project.parentNode.appendChild(project));
+  });
+
+  // Initialize project filter dropdown as SlimSelect
+  const projectFilter = new SlimSelect({
+    select: '#project-filter',
+    settings: {
+      placeholder: 'Filter by technology',
+      allowDeselect: true,
+    }
   });
 
   // Filter logic
-  $('#project-filter').on('change', function() {
-    const selectedBadge = $(this).val();
+  document.getElementById('project-filter').addEventListener('change', function() {
+    const selectedBadge = this.value;
     
-    $('.project').each(function() {
-      const projectBadges = $(this).find('.overlay__badge').map(function() { return $(this).text().trim(); }).get();
+    document.querySelectorAll('.project').forEach(function(project) {
+      const projectBadges = Array.from(project.querySelectorAll('.overlay__badge')).map(b => b.textContent.trim());
       
-      if (selectedBadge === 'all' || projectBadges.includes(selectedBadge)) {
-        $(this).show();
+      if (selectedBadge === 'all' || selectedBadge === '' || projectBadges.includes(selectedBadge)) {
+        project.style.display = '';
       } else {
-        $(this).hide();
+        project.style.display = 'none';
       }
     });
   });
